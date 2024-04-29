@@ -1,0 +1,75 @@
+ul, li {
+    list-style-type: none;
+}
+.v-input {
+    flex:0 0 auto;
+}
+.v-input__details {
+    display: none;
+}
+.manage {
+    $text-indent: 40px;
+    &-tree-menu {
+        overflow: hidden;
+        p {
+            position: relative;
+            display: flex;
+            flex-flow: row;
+            justify-content: start;
+            margin-top: 5px;
+            align-items: center;
+            background: rgb(var(--v-theme-borderLight), .15);
+            border: 1px solid #ddd;
+            border-radius: $border-radius-root;
+            z-index: 2;
+
+            button {
+                margin-left: auto;
+                transition: all .5s;
+            }
+            &:has(+ .active) {
+                background: red;
+                button {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        ul {
+            overflow: hidden;
+            visibility: hidden;
+            max-height: 0;
+            opacity: 0;
+            padding-inline-start: $text-indent;
+            &.nested {
+                &.active {
+                    visibility: visible;
+                    opacity: 1;
+                    max-height: 2000px;
+                    transition: all 0.5s;
+                    p {
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            left: -16px;
+                            top: 50%;
+                            width: 16px;
+                            height: 1px;
+                            background: red;
+                        }
+                        &:last-child:after {
+                            content: '';
+                            position: absolute;
+                            left: -16px;
+                            bottom: 50%;
+                            width: 1px;
+                            height: 100vh;
+                            background: red;
+                            z-index: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
