@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import TreeMenu from "./TreeMenu.vue";
-import { tree } from "./tree"
-import { ChevronDownIcon } from 'vue-tabler-icons'
+import MultiSelect from "./MultiSelect.vue";
+import { tree } from "./tree";
+import { ChevronDownIcon } from 'vue-tabler-icons';
 
 const menuList = ref([
     { name: 'menu1',
@@ -31,7 +32,18 @@ const menuList = ref([
     { name: 'menu3'},
     { name: 'menu4'},
     { name: 'menu5'},
-])
+]);
+
+const multiList = ref([
+    { originTitle : '전체 그룹'},
+    { copyedTitle : '선택 그룹'},
+    { groups : [
+        { name: 'Total'},
+        { name: 'group1' },
+        { name: 'group2' },
+        { name: 'group3' } 
+    ]},
+]);
 
 onMounted(() => {
     tree();
@@ -63,4 +75,8 @@ onMounted(() => {
             </p>
         </li>
     </ul>
+
+    <div  style="border: 1px solid red;">
+        <MultiSelect :items="multiList" />
+    </div>
 </template>

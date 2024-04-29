@@ -10,7 +10,7 @@ const TestRoutes = {
     {
       name: 'page2',
       path: 'page2',
-      component: () => import('@/views/test/DialogTest.vue')
+      component: () => import('@/views/test/MultiSelect.vue')
     }
   ]
 };
